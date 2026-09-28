@@ -1,9 +1,11 @@
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  color: #e5e7eb;
-  background-color: #0f172a;
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color-scheme: dark;
+  color: #e8ecf3;
+  background-color: #070b14;
   line-height: 1.5;
   font-weight: 400;
+  -webkit-font-smoothing: antialiased;
 }
 
 *,
@@ -15,4 +17,26 @@
 body {
   margin: 0;
   min-height: 100vh;
+  background: #070b14;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+button, select, input {
+  font: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #26314a;
+  border-radius: 8px;
+  border: 2px solid #0b1120;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
 }
