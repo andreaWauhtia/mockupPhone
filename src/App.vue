@@ -678,7 +678,9 @@ async function downloadStudioMockup() {
     drawThickness(ctx, quad, tiltY.value >= 0 ? 'right' : 'left', dispScale)
   }
   drawWarped(ctx, pc, quad)
-  applyVolumeLight(ctx, quad)
+  if (!useIphoneAssetFrame.value) {
+    applyVolumeLight(ctx, quad)
+  }
 
   const baseName = `${getBaseFileName(imageName.value)}-${selectedDeviceKey.value}-studio-3d`
   const targets = exportFormat.value === 'both' ? ['png', 'webp'] : [exportFormat.value]
@@ -1123,7 +1125,11 @@ function drawWarped(ctx, src, quad) {
       }
     }
   }
-  ctx.putImageData(out, minX, minY)
+  const warped = document.createElement('canvas')
+  warped.width = outW
+  warped.height = outH
+  warped.getContext('2d').putImageData(out, 0, 0)
+  ctx.drawImage(warped, minX, minY)
 }
 
 watch([scale, selectedDeviceKey], () => updateFit())
